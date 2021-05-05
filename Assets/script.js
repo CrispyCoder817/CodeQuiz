@@ -1,6 +1,6 @@
 const initializeQuiz = document.getElementById("start-btn");
 const nextQuestion = document.getElementById("next-btn");
-const containmentOfQuestion = document.getElementById("question-container");
+const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 
@@ -16,12 +16,12 @@ function beginGame() {
   initializeQuiz.classList.add("hide");
   randomQuestion = questions.sort(() => Math.random() - 0.5);
   cQI = 0;
-  containmentofQuestion.classList.remove("hide");
+  questionContainerElement.classList.remove("hide");
   showNextQuestion();
 }
 
 function showNextQuestion() {
-  resetState();
+  reset();
   showQuestion(randomQuestion[cQI]);
 }
 
@@ -39,7 +39,7 @@ function showQuestion(question) {
   });
 }
 
-function resetState() {
+function reset() {
   clearStatusClass(document.body);
   nextQuestion.classList.add("hide");
   while (answerButtonsElement.firstChild) {
