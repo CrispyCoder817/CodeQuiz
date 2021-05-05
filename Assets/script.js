@@ -4,8 +4,6 @@ const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 
-let randomQuestion, cQI;
-
 initializeQuiz.addEventListener("click", beginGame);
 nextQuestion.addEventListener("click", () => {
   cQI++;
@@ -92,7 +90,6 @@ const questions = [
       { text: "<javaScript>", correct: false },
     ],
   },
-
   {
     question:
       'What is the correct syntax for referring to an external script called "xxx.js"?',
@@ -117,5 +114,43 @@ const questions = [
       { text: "for (i=0; i<=5; i++)", correct: true },
       { text: "for (i=1; i==5; I==)", correct: false },
     ],
+  },
+  {
+    question: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: [
+      { text: "strings", correct: false },
+      { text: "booleans", correct: false },
+      { text: "numbers", correct: false },
+      { text: "alers", correct: true },
+    ],
+  },
+  {
+    question:
+      "The condition in an if / else statement is enclosed within ____.",
+    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    answer: "parentheses",
+  },
+  {
+    question: "Arrays in JavaScript can be used to store ____.",
+    choices: [
+      "numbers and strings",
+      "other arrays",
+      "booleans",
+      "all of the above",
+    ],
+    answer: "all of the above",
+  },
+  {
+    question:
+      "String values must be enclosed within ____ when being assigned to variables.",
+    choices: ["commas", "curly brackets", "quotes", "parentheses"],
+    answer: "quotes",
+  },
+  {
+    question:
+      "A very useful tool used during development and debugging for printing content to the debugger is:",
+    choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+    answer: "console.log",
   },
 ];
