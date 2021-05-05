@@ -1,28 +1,28 @@
-const startButton = document.getElementById("start-btn");
-const nextButton = document.getElementById("next-btn");
-const questionContainerElement = document.getElementById("question-container");
+const initializeQuiz = document.getElementById("start-btn");
+const nextQuestion = document.getElementById("next-btn");
+const containmentOfQuestion = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 
-let shuffledQuestions, currentQuestionIndex;
+let randomQuestion, cQI;
 
-startButton.addEventListener("click", startGame);
-nextButton.addEventListener("click", () => {
-  currentQuestionIndex++;
-  setNextQuestion();
+initializeQuiz.addEventListener("click", beginGame);
+nextQuestion.addEventListener("click", () => {
+  cQI++;
+  showNextQuestion();
 });
 
-function startGame() {
-  startButton.classList.add("hide");
-  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-  currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hide");
-  setNextQuestion();
+function beginGame() {
+  initializeQuiz.classList.add("hide");
+  randomQuestion = questions.sort(() => Math.random() - 0.5);
+  cQI = 0;
+  containmentofQuestion.classList.remove("hide");
+  showNextQuestion();
 }
 
-function setNextQuestion() {
+function showNextQuestion() {
   resetState();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
+  showQuestion(randomQuestion[cQI]);
 }
 
 function showQuestion(question) {
@@ -41,7 +41,7 @@ function showQuestion(question) {
 
 function resetState() {
   clearStatusClass(document.body);
-  nextButton.classList.add("hide");
+  nextQuestion.classList.add("hide");
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild);
   }
@@ -50,19 +50,19 @@ function resetState() {
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
-  setStatusClass(document.body, correct);
+  defineStatusClass(document.body, correct);
   Array.from(answerButtonsElement.children).forEach((button) => {
-    setStatusClass(button, button.dataset.correct);
+    defineStatusClass(button, button.dataset.correct);
   });
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove("hide");
+  if (randomQuestion.length > cQI + 1) {
+    nextQuestion.classList.remove("hide");
   } else {
-    startButton.innerText = "Restart";
-    startButton.classList.remove("hide");
+    initializeQuiz.innerText = "Restart";
+    initializeQuiz.classList.remove("hide");
   }
 }
 
-function setStatusClass(element, correct) {
+function defineStatusClass(element, correct) {
   clearStatusClass(element);
   if (correct) {
     element.classList.add("correct");
