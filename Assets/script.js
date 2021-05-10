@@ -31,7 +31,6 @@ function countDown() {
 }
 function showNextQuestion() {
   cQI++;
-  // reset();
   showQuestion(randomQuestion[cQI]);
 }
 
@@ -66,13 +65,12 @@ function selectAnswer(e) {
   else {
    timer--;   
   }
-  // defineStatusClass(document.body, correct);
+
   Array.from(answerButton.children).forEach((button) => {
     defineStatusClass(button, button.dataset.correct);
   });
   if (randomQuestion.length > cQI + 1) {
    setTimeout(showNextQuestion, 500);
-    // nextQuestion.classList.remove("hide");
   } else {
     initializeQuiz.innerText = "Restart";
     initializeQuiz.classList.remove("hide");
@@ -81,7 +79,6 @@ function selectAnswer(e) {
 }
 
 function defineStatusClass(element, correct) {
-  // clearStatusClass(element);
   if (correct === 'true'){
   element.classList.add("correct");
   } else {
@@ -95,9 +92,7 @@ function clearStatusClass(element) {
 }
 
 function add1() {
-  // alert("Adding 1 to your score!");
   score = score + 1;
-  // alert(score);
 }
 
 const questions = [
