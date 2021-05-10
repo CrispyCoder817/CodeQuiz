@@ -4,7 +4,7 @@ const questionContainerElement = document.getElementById("question-container");
 const questLoveElement = document.getElementById("question");
 const answerButton = document.getElementById("answer-buttons");
 var score = 0;
-var timer = 10;
+var timer = 100;
 var timerid;
 
 initializeQuiz.addEventListener("click", beginGame);
